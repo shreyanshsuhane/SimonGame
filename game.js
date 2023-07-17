@@ -63,7 +63,7 @@ function checkAnswer(currentLevel2) {
             
         //console.log("right");
     }
-    } else if (gamePattern.length>1) {
+    } else {
         gamePattern=[];
         //console.log("wrong");
         $("body").addClass("game-over");
@@ -72,15 +72,16 @@ function checkAnswer(currentLevel2) {
             $("body").removeClass("game-over");},600);
         var audio_error = new Audio("sounds/wrong.mp3");
         audio_error.play();
-        setTimeout(function () {startOver()},1000);
+        setTimeout(function () {startOver()},10);
     }
 }
 
 
 function startOver() {
     gamePattern=[];
+    $(".container").addClass("hidden");
+    $("h1").text("Your last Score = "+ level + ", Press Any Key to Start again");
     level=0;
-    $("h1").text("Press Any Key to Start");
     started=false;
 }
 function buttonAnimation(y) {
