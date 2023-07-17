@@ -4,6 +4,17 @@ var buttons=$("button");
 var userClickedPattern=[];
 var level=0;
 var started=false;
+$("html").click((function() {
+    if (!started) {
+        $(".container").removeClass("hidden");
+        setTimeout(function () {
+            nextSequence();
+      
+      
+            started = true;},200);
+
+    }
+  }));
 $("html").keypress((function() {
     if (!started) {
       nextSequence();
@@ -13,14 +24,7 @@ $("html").keypress((function() {
     }
   }));
 //$("html").keypress(function () {level++;});
-$("html").click((function() {
-    if (!started) {
-      nextSequence();
-      
-      
-      started = true;
-    }
-  }));
+
 function nextSequence() {
     level++;
     $("h1").text("Level "+level);
@@ -59,7 +63,7 @@ function checkAnswer(currentLevel2) {
             
         //console.log("right");
     }
-    } else {
+    } else if (gamePattern.length>1) {
         gamePattern=[];
         //console.log("wrong");
         $("body").addClass("game-over");
@@ -71,6 +75,8 @@ function checkAnswer(currentLevel2) {
         setTimeout(function () {startOver()},1000);
     }
 }
+
+
 function startOver() {
     gamePattern=[];
     level=0;
