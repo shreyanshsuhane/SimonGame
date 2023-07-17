@@ -13,7 +13,14 @@ $("html").keypress((function() {
     }
   }));
 //$("html").keypress(function () {level++;});
-
+$("html").click((function() {
+    if (!started) {
+      nextSequence();
+      
+      
+      started = true;
+    }
+  }));
 function nextSequence() {
     level++;
     $("h1").text("Level "+level);
